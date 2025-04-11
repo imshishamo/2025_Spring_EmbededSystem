@@ -49,7 +49,8 @@ By the end of this course, students will be able to:
 
 ## 🧑‍💻 Author / Maintainer
 
-**NTU_student:R12525093 Yen-Yu Liu**
+**NTU_student:R12525093 Yen-Yu Liu**  <br>
 **NTU_student:R13525042 Tsung-Kuang Liao**
+
 
 
