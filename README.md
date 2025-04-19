@@ -3,7 +3,6 @@
 Welcome to the official lab repository for the **NTUEE Embedded Systems course (Spring 2025)**.  
 This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, BLE, and Linux-based tools.
 
----
 
 ## 🧪 Lab Overview
 
@@ -12,21 +11,18 @@ This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, B
 - Use a periodic timer callback
 - Control LEDs with CMSIS OS and GPIO settings
 
----
 
 ### 📡 Lab 2: Wi-Fi & Sensor Data
 - Connect to Wi-Fi and transmit LSM6DSL accelerometer data over TCP
 - Visualize data on the host device
 - Enable significant motion detection to trigger alerts via interrupts
 
----
 
 ### 🔗 Lab 3: BLE Central (RPi)
 - Set up a Raspberry Pi as a BLE Central device
 - Connect to a mobile BLE testing app
 - Modify CCCD to configure notification behavior
 
----
 
 ### 🔁 Lab 4: BLE Peripheral (STM32) + Central (RPi)
 - STM32 as BLE GATT server, RPi as client
@@ -36,13 +32,11 @@ This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, B
 > 📁 Python code: `hw4-rpi-client.py`  
 > ⚙️ STM32 code in accompanying files
 
----
 
 ### ⚙️ Lab 5: PWM & Logic Analyzer
 - Use timers to generate PWM signals
 - Analyze signal output via logic analyzer through Arduino-compatible headers
 
----
 
 ### 🌡️ Lab 6: Data Acquisition, DMA & Interrupt
 
@@ -61,7 +55,6 @@ This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, B
 - Apply a 3Hz low-pass FIR filter to z-axis accelerometer data
 - Utilize ARM CMSIS-DSP math library for signal processing
 
----
 
 ## 👨‍💻 Maintainers
 
