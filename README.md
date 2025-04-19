@@ -61,6 +61,5 @@ This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, B
 **NTU_student: R12525093 Yen-Yu Liu**  
 **NTU_student: R13525042 Tsung-Kuang Liao**
 
----
 
 Thanks for visiting this repository. Happy coding and good luck with embedded development!
