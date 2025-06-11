@@ -1,65 +1,50 @@
-# 💻 2025 Spring – Embedded Systems @ NTUEE
+# 🌟 Motion-Triggered UART Notification Project
 
-Welcome to the official lab repository for the **NTUEE Embedded Systems course (Spring 2025)**.  
-This course involves hands-on embedded programming using STM32, Mbed OS, RTOS, BLE, and Linux-based tools.
-
-
-## 🧪 Lab Overview
-
-### 🔴 Lab 1: LED Blinking & RTOS API
-- Handle user button interrupts (single tap / long press)
-- Use a periodic timer callback
-- Control LEDs with CMSIS OS and GPIO settings
-
-
-### 📡 Lab 2: Wi-Fi & Sensor Data
-- Connect to Wi-Fi and transmit LSM6DSL accelerometer data over TCP
-- Visualize data on the host device
-- Enable significant motion detection to trigger alerts via interrupts
-
-
-### 🔗 Lab 3: BLE Central (RPi)
-- Set up a Raspberry Pi as a BLE Central device
-- Connect to a mobile BLE testing app
-- Modify CCCD to configure notification behavior
-
-
-### 🔁 Lab 4: BLE Peripheral (STM32) + Central (RPi)
-- STM32 as BLE GATT server, RPi as client
-- RPi writes to CCCD to set sampling frequency
-- STM32 sends sensor data via notification; RPi prints it to screen
-
-> 📁 Python code: `hw4-rpi-client.py`  
-> ⚙️ STM32 code in accompanying files
-
-
-### ⚙️ Lab 5: PWM & Logic Analyzer
-- Use timers to generate PWM signals
-- Analyze signal output via logic analyzer through Arduino-compatible headers
-
-
-### 🌡️ Lab 6: Data Acquisition, DMA & Interrupt
-
-**Part 1: Interrupt Mode**
-- Timer triggers ADC read of on-board temperature sensor
-- Data printed via UART
-
-**Part 2: DMA Mode**
-- ADC samples automatically
-- DMA stores data in memory buffer
-- DMA interrupt triggers UART output when buffer is half/full
+**🎯 STM32L4S5VIT6 + SR505 PIR + FreeRTOS + USART1**
 
 ---
 
-### 📊 Lab 7: CMSIS-DSP Programming
-- Apply a 3Hz low-pass FIR filter to z-axis accelerometer data
-- Utilize ARM CMSIS-DSP math library for signal processing
+## ✨ Project Overview
+
+This project uses an SR505 passive infrared sensor (PIR) to detect motion. When someone is continuously detected in front of the sensor for 3 seconds, the STM32L4S5VIT6 microcontroller sends a UART message `"start\n"` to a PC or Raspberry Pi using a USB-TTL adapter. Perfect for building a smart trash bin or an automatic door!
+
+---
+
+## 🔌 Hardware Connections
+
+| Component        | STM32 Pin         | Notes                         |
+|------------------|-------------------|-------------------------------|
+| **SR505 PIR**    | VCC → 5V          | External power (optional)     |
+|                  | GND → GND         | Common ground                 |
+|                  | OUT → PA0         | GPIO Input                    |
+| **LED Indicator**| PB0 → LED → GND   | 220Ω resistor (optional)      |
+| **USART1**       | PA9 (TX) → USB-TTL RX / Pi GPIO15 (RXD) | TX only needed for debug |
+|                  | PA10 (RX) ← USB-TTL TX / Pi GPIO14 (TXD) | Optional, not used here |
+|                  | GND → USB-TTL GND / Pi GND | Ground reference |
+
+---
+
+## 🗂️ Software Structure
+
+📂 **Src/**  
+- `main.c`: Main application, FreeRTOS tasks  
+- `hc_sr505.c`: SR505 sensor GPIO logic  
+- `usart.c`: UART initialization and printf retarget  
+
+📂 **Inc/**  
+- `hc_sr505.h`: SR505 header  
+- `usart.h`: UART header  
+
+---
+
+## 🚀 How to Build & Test
+
+1. Open the `.ioc` file in STM32CubeIDE and **Generate Code**  
+2. Build the project and **flash** it to your board  
+3. Connect the hardware as shown above  
+4. Open PuTTY or `minicom` at **115200 baud**, 8 data bits, no parity, 1 stop bit, no flow control  
+5. You should see `"Hello World\n"` or `"start\n"` messages when motion is detected!  
+
+---
 
 
-## 👨‍💻 Maintainers
-
-**NTU_student: R12525093 Yen-Yu Liu**  
-**NTU_student: R13525042 Tsung-Kuang Liao**
-
-
-Thanks for visiting this repository. Happy coding and good luck with embedded development!
